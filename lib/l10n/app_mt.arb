@@ -1293,5 +1293,10 @@
     "videoScalingFitHeight": "Għoli it-Tul",
     "@videoScalingFitHeight": {},
     "videoScalingFitWidth": "Għoli il-wisa'",
-    "@videoScalingFitWidth": {}
+    "@videoScalingFitWidth": {},
+    "uiScale": "Skala tal-UI",
+    "uiScaleDesc": "Ikka l-interfaċċi kollha tal-utent. Uża Ctrl++/Ctrl+- biex tizbir/tizbar u Ctrl+0 biex tirrisettja.",
+    "zoomIn": "Żbir il-bogħod",
+    "zoomOut": "Żbir il-qrib",
+    "zoomReset": "Risettja ż-żbir"
 }

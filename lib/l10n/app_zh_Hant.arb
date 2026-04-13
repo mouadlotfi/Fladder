@@ -1856,5 +1856,10 @@
     "hidePlayedInLatestTitle": "隱藏已觀看內容",
     "hidePlayedInLatestDescription": "隱藏「最近新增的影片」中已觀看的內容",
     "groupedFoldersTitle": "分組媒體庫",
-    "groupedFoldersDescription": "自動將以下媒體庫的內容分組為「電影」、「音樂」和「電視節目」等檢視項目。"
+    "groupedFoldersDescription": "自動將以下媒體庫的內容分組為「電影」、「音樂」和「電視節目」等檢視項目。",
+    "uiScale": "UI 縮放",
+    "uiScaleDesc": "縮放整個使用者介面。使用 Ctrl++/Ctrl+- 放大/縮小，Ctrl+0 重置。",
+    "zoomIn": "放大",
+    "zoomOut": "縮小",
+    "zoomReset": "重置縮放"
 }

@@ -13,7 +13,7 @@ part of 'key_combinations.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$KeyCombination {
+mixin _$KeyCombination implements DiagnosticableTreeMixin {
   @LogicalKeyboardSerializer()
   LogicalKeyboardKey? get key;
   @LogicalKeyboardSerializer()
@@ -35,7 +35,17 @@ mixin _$KeyCombination {
   Map<String, dynamic> toJson();
 
   @override
-  String toString() {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties
+      ..add(DiagnosticsProperty('type', 'KeyCombination'))
+      ..add(DiagnosticsProperty('key', key))
+      ..add(DiagnosticsProperty('modifier', modifier))
+      ..add(DiagnosticsProperty('altKey', altKey))
+      ..add(DiagnosticsProperty('altModifier', altModifier));
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'KeyCombination(key: $key, modifier: $modifier, altKey: $altKey, altModifier: $altModifier)';
   }
 }
@@ -269,7 +279,7 @@ extension KeyCombinationPatterns on KeyCombination {
 
 /// @nodoc
 @JsonSerializable()
-class _KeyCombination extends KeyCombination {
+class _KeyCombination extends KeyCombination with DiagnosticableTreeMixin {
   _KeyCombination(
       {@LogicalKeyboardSerializer() this.key,
       @LogicalKeyboardSerializer() this.modifier,
@@ -308,7 +318,17 @@ class _KeyCombination extends KeyCombination {
   }
 
   @override
-  String toString() {
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties
+      ..add(DiagnosticsProperty('type', 'KeyCombination'))
+      ..add(DiagnosticsProperty('key', key))
+      ..add(DiagnosticsProperty('modifier', modifier))
+      ..add(DiagnosticsProperty('altKey', altKey))
+      ..add(DiagnosticsProperty('altModifier', altModifier));
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'KeyCombination(key: $key, modifier: $modifier, altKey: $altKey, altModifier: $altModifier)';
   }
 }

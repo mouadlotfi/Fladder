@@ -829,5 +829,10 @@
         }
     },
     "settingSecurityApplockTitle": "Κλείδωμα Εφαρμογής",
-    "@settingSecurityApplockTitle": {}
+    "@settingSecurityApplockTitle": {},
+    "uiScale": "Κλίμακα διεπαφής",
+    "uiScaleDesc": "Κλιμακώστε ολόκληρη τη διεπαφή χρήστη. Χρησιμοποιήστε Ctrl++/Ctrl+- για ζουμ μέσα/έξω και Ctrl+0 για επαναφορά.",
+    "zoomIn": "Ζουμ μέσα",
+    "zoomOut": "Ζουμ έξω",
+    "zoomReset": "Επαναφορά ζουμ"
 }

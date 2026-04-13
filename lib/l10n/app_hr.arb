@@ -783,5 +783,10 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "uiScale": "Skaliranje sučelja",
+    "uiScaleDesc": "Skalirajte cijelo korisničko sučelje. Koristite Ctrl++/Ctrl+- za zumiranje i Ctrl+0 za ponovno postavljanje.",
+    "zoomIn": "Povećaj",
+    "zoomOut": "Smanji",
+    "zoomReset": "Ponovno postavi zum"
 }

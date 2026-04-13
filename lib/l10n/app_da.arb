@@ -2129,5 +2129,10 @@
     "seerrLoadingUser": "Indlæser bruger",
     "@seerrLoadingUser": {},
     "seerrUnknownUser": "Ukendt bruger",
-    "@seerrUnknownUser": {}
+    "@seerrUnknownUser": {},
+    "uiScale": "UI-skala",
+    "uiScaleDesc": "Skaler hele brugergrænsefladen. Brug Ctrl++/Ctrl+- til at zoome ind/ud og Ctrl+0 for at nulstille.",
+    "zoomIn": "Zoom ind",
+    "zoomOut": "Zoom ud",
+    "zoomReset": "Nulstil zoom"
 }

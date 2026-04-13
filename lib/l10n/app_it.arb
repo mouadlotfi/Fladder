@@ -1870,5 +1870,10 @@
     "bitrateLabel": "Bitrate",
     "kbps": "kbps",
     "resolutionLabel": "Risoluzione",
-    "downloadTranscoded": "Scarica transcodificato"
+    "downloadTranscoded": "Scarica transcodificato",
+    "uiScale": "Scala interfaccia",
+    "uiScaleDesc": "Ridimensiona l'intera interfaccia utente. Usa Ctrl++/Ctrl+- per ingrandire/ridurre e Ctrl+0 per ripristinare.",
+    "zoomIn": "Ingrandisci",
+    "zoomOut": "Riduci",
+    "zoomReset": "Ripristina zoom"
 }

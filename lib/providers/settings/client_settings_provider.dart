@@ -15,9 +15,10 @@ import 'package:fladder/src/directory_bookmark.g.dart';
 import 'package:fladder/util/custom_color_themes.dart';
 import 'package:fladder/util/debouncer.dart';
 
-final clientSettingsProvider = StateNotifierProvider<ClientSettingsNotifier, ClientSettingsModel>((ref) {
-  return ClientSettingsNotifier(ref);
-});
+final clientSettingsProvider =
+    StateNotifierProvider<ClientSettingsNotifier, ClientSettingsModel>((ref) {
+      return ClientSettingsNotifier(ref);
+    });
 
 class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
   ClientSettingsNotifier(this.ref) : super(ClientSettingsModel.defaultModel());
@@ -29,14 +30,18 @@ class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
   @override
   set state(ClientSettingsModel value) {
     super.state = value;
-    _debouncer.run(() => ref.read(sharedUtilityProvider).clientSettings = state);
+    _debouncer.run(
+      () => ref.read(sharedUtilityProvider).clientSettings = state,
+    );
   }
 
   Future<void> initialize(ClientSettingsModel value) async {
     ClientSettingsModel newState = value;
     try {
       if (!kIsWeb && Platform.isMacOS) {
-        final bookmarkPath = await DirectoryBookmark().resolveDirectory(syncPathKey);
+        final bookmarkPath = await DirectoryBookmark().resolveDirectory(
+          syncPathKey,
+        );
         newState = newState.copyWith(syncPath: bookmarkPath);
       }
     } catch (e) {
@@ -49,37 +54,49 @@ class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
   void setWindowPosition(Offset windowPosition) =>
       state = state.copyWith(position: Vector2.fromPosition(windowPosition));
 
-  void setWindowSize(Size windowSize) => state = state.copyWith(size: Vector2.fromSize(windowSize));
+  void setWindowSize(Size windowSize) =>
+      state = state.copyWith(size: Vector2.fromSize(windowSize));
 
   void setThemeMode(ThemeMode? themeMode) {
     if (themeMode == null) return;
     state = state.copyWith(themeMode: themeMode);
   }
 
-  void setThemeColor(ColorThemes? themeColor) => state = state.copyWith(themeColor: themeColor);
+  void setThemeColor(ColorThemes? themeColor) =>
+      state = state.copyWith(themeColor: themeColor);
 
-  void setAmoledBlack(bool? value) => state = state.copyWith(amoledBlack: value ?? false);
+  void setAmoledBlack(bool? value) =>
+      state = state.copyWith(amoledBlack: value ?? false);
 
-  void setDerivedColorsFromItem(bool? value) => state = state.copyWith(deriveColorsFromItem: value ?? false);
+  void setDerivedColorsFromItem(bool? value) =>
+      state = state.copyWith(deriveColorsFromItem: value ?? false);
 
-  void useSystemIME(bool? value) => state = state.copyWith(useSystemIME: value ?? false);
+  void useSystemIME(bool? value) =>
+      state = state.copyWith(useSystemIME: value ?? false);
 
-  void setBlurPlaceholders(bool value) => state = state.copyWith(blurPlaceHolders: value);
+  void setBlurPlaceholders(bool value) =>
+      state = state.copyWith(blurPlaceHolders: value);
 
-  void setTimeOut(Duration? duration) => state = state.copyWith(timeOut: duration);
+  void setTimeOut(Duration? duration) =>
+      state = state.copyWith(timeOut: duration);
 
   void setUpdateNotificationsInterval(Duration duration) {
     state = state.copyWith(updateNotificationsInterval: duration);
     ref.read(updateNotificationsProvider).registerBackgroundTask();
   }
 
-  void setBlurEpisodes(bool value) => state = state.copyWith(blurUpcomingEpisodes: value);
+  void setBlurEpisodes(bool value) =>
+      state = state.copyWith(blurUpcomingEpisodes: value);
 
-  void setMediaKeys(bool value) => state = state.copyWith(enableMediaKeys: value);
+  void setMediaKeys(bool value) =>
+      state = state.copyWith(enableMediaKeys: value);
 
-  void setPosterSize(double value) => state = state.copyWith(posterSize: value.clamp(0.5, 1.5));
+  void setPosterSize(double value) =>
+      state = state.copyWith(posterSize: value.clamp(0.5, 1.5));
 
-  void addPosterSize(double value) => state = state.copyWith(posterSize: (state.posterSize + value).clamp(0.5, 1.5));
+  void addPosterSize(double value) => state = state.copyWith(
+    posterSize: (state.posterSize + value).clamp(0.5, 1.5),
+  );
 
   Future<ClientSettingsModel> setSyncPath(String? path) async {
     String? newPath = path;
@@ -96,7 +113,8 @@ class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
     return state = state.copyWith(syncPath: newPath);
   }
 
-  void update(Function(ClientSettingsModel current) value) => state = value(state);
+  void update(Function(ClientSettingsModel current) value) =>
+      state = value(state);
 
   void setSchemeVariant(DynamicSchemeVariant? type) =>
       state = state.copyWith(schemeVariant: type ?? state.schemeVariant);
@@ -104,13 +122,31 @@ class ClientSettingsNotifier extends StateNotifier<ClientSettingsModel> {
   void setRequireWifi(bool value) => state = state.copyWith(requireWifi: value);
 
   void setShortcuts(MapEntry<GlobalHotKeys, KeyCombination> newEntry) =>
-      state = state.copyWith(shortcuts: state.shortcuts.setOrRemove(newEntry, state.defaultShortCuts));
+      state = state.copyWith(
+        shortcuts: state.shortcuts.setOrRemove(
+          newEntry,
+          state.defaultShortCuts,
+        ),
+      );
 
-  Future<void> closeDirectory() => DirectoryBookmark().closeDirectory(syncPathKey);
+  Future<void> closeDirectory() =>
+      DirectoryBookmark().closeDirectory(syncPathKey);
 
-  void setExpandedTVLayout(bool value) => state = state.copyWith(useTVExpandedLayout: value);
+  void setExpandedTVLayout(bool value) =>
+      state = state.copyWith(useTVExpandedLayout: value);
 
-  void setBlurEffects(bool value) => state = state.copyWith(enableBlurEffects: value);
+  void setBlurEffects(bool value) =>
+      state = state.copyWith(enableBlurEffects: value);
 
-  void toggleSideBar() => state = state.copyWith(expandSideBar: !state.expandSideBar);
+  void toggleSideBar() =>
+      state = state.copyWith(expandSideBar: !state.expandSideBar);
+
+  void setUiScale(double value) =>
+      state = state.copyWith(uiScale: value.clamp(0.5, 2.0));
+
+  void zoomIn() => setUiScale(state.uiScale + 0.1);
+
+  void zoomOut() => setUiScale(state.uiScale - 0.1);
+
+  void zoomReset() => setUiScale(1.0);
 }

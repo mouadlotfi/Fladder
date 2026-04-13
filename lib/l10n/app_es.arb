@@ -1634,5 +1634,10 @@
     "enableDoubleTapSeekDesc": "Doble toque en el lado izquierdo/derecho de la pantalla para retroceder/avanzar. Doble toque en el centro para reproducir/pausar",
     "showLess": "Mostrar menos",
     "requestMore": "Solicitar más",
-    "activeTvChannels": "Canales de TV activos"
+    "activeTvChannels": "Canales de TV activos",
+    "uiScale": "Escala de la interfaz",
+    "uiScaleDesc": "Escala toda la interfaz de usuario. Usa Ctrl++/Ctrl+- para ampliar/reducir y Ctrl+0 para restablecer.",
+    "zoomIn": "Ampliar",
+    "zoomOut": "Reducir",
+    "zoomReset": "Restablecer zoom"
 }

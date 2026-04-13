@@ -459,5 +459,10 @@
     "openShow": "Digeriñ an abadenn",
     "@openShow": {},
     "seerrDetails": "Munudoù Seerr",
-    "@seerrDetails": {}
+    "@seerrDetails": {},
+    "uiScale": "Échelle de l'interface",
+    "uiScaleDesc": "Mettre à l'échelle toute l'interface utilisateur. Utilisez Ctrl++/Ctrl+- pour zoomer et Ctrl+0 pour réinitialiser.",
+    "zoomIn": "Zoom avant",
+    "zoomOut": "Zoom arrière",
+    "zoomReset": "Réinitialiser le zoom"
 }

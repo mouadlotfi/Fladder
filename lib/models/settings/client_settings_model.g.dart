@@ -59,6 +59,7 @@ _ClientSettingsModel _$ClientSettingsModelFromJson(Map<String, dynamic> json) =>
       useTVExpandedLayout: json['useTVExpandedLayout'] as bool? ?? false,
       lastViewedUpdate: json['lastViewedUpdate'] as String?,
       libraryPageSize: (json['libraryPageSize'] as num?)?.toInt(),
+      uiScale: (json['uiScale'] as num?)?.toDouble() ?? 1.0,
       shortcuts: (json['shortcuts'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry($enumDecode(_$GlobalHotKeysEnumMap, k),
                 KeyCombination.fromJson(e as Map<String, dynamic>)),
@@ -101,6 +102,7 @@ Map<String, dynamic> _$ClientSettingsModelToJson(
       'useTVExpandedLayout': instance.useTVExpandedLayout,
       'lastViewedUpdate': instance.lastViewedUpdate,
       'libraryPageSize': instance.libraryPageSize,
+      'uiScale': instance.uiScale,
       'shortcuts': instance.shortcuts
           .map((k, e) => MapEntry(_$GlobalHotKeysEnumMap[k]!, e)),
     };
@@ -151,4 +153,7 @@ const _$GlobalHotKeysEnumMap = {
   GlobalHotKeys.search: 'search',
   GlobalHotKeys.exit: 'exit',
   GlobalHotKeys.toggleSideBar: 'toggleSideBar',
+  GlobalHotKeys.zoomIn: 'zoomIn',
+  GlobalHotKeys.zoomOut: 'zoomOut',
+  GlobalHotKeys.zoomReset: 'zoomReset',
 };

@@ -1077,5 +1077,10 @@
     "showMore": "Zobrazit více",
     "itemColorsTitle": "Barva položky",
     "clientSettingsUseSystemIMETitle": "Použití systémové klávesnice",
-    "homeBannerTV": "TV"
+    "homeBannerTV": "TV",
+    "uiScale": "Měřítko rozhraní",
+    "uiScaleDesc": "Škálujte celé uživatelské rozhraní. Použijte Ctrl++/Ctrl+- pro přiblížení/oddálení a Ctrl+0 pro reset.",
+    "zoomIn": "Přiblížit",
+    "zoomOut": "Oddálit",
+    "zoomReset": "Resetovat přiblížení"
 }

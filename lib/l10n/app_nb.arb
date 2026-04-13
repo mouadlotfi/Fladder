@@ -940,5 +940,10 @@
     "settingsPlayerMobileWarning": "Å skru på maskinvareaskelerasjon og systemspesifikke libass-undertekster på Android kan føre til at noen undertekster ikke vises.",
     "@settingsPlayerMobileWarning": {},
     "nativeName": "Norsk bokmål",
-    "@nativeName": {}
+    "@nativeName": {},
+    "uiScale": "UI-skala",
+    "uiScaleDesc": "Skaler hele brukergrensesnittet. Bruk Ctrl++/Ctrl+- for å zoome inn/ut og Ctrl+0 for å tilbakestille.",
+    "zoomIn": "Zoom inn",
+    "zoomOut": "Zoom ut",
+    "zoomReset": "Tilbakestill zoom"
 }

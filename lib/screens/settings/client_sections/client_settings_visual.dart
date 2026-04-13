@@ -26,18 +26,61 @@ List<Widget> buildClientSettingsVisual(
     context,
     SettingsLabelDivider(label: context.localized.settingsVisual),
     [
+      Column(
+        children: [
+          SettingsListTile(
+            label: Text(context.localized.uiScale),
+            subLabel: Text(context.localized.uiScaleDesc),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  '${(clientSettings.uiScale * 100).round()}%',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                if (clientSettings.uiScale != 1.0) ...[
+                  const SizedBox(width: 8),
+                  IconButton(
+                    icon: const Icon(Icons.restore),
+                    tooltip: context.localized.zoomReset,
+                    onPressed: () =>
+                        ref.read(clientSettingsProvider.notifier).zoomReset(),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: FladderSlider(
+              min: 0.5,
+              max: 2.0,
+              value: clientSettings.uiScale,
+              divisions: 15,
+              onChanged: (value) =>
+                  ref.read(clientSettingsProvider.notifier).setUiScale(value),
+            ),
+          ),
+        ],
+      ),
       SettingsListTileEnum(
         label: Text(context.localized.displayLanguage),
         currentWidget: Localizations.override(
           context: context,
-          locale: ref.watch(clientSettingsProvider.select((value) => (value.selectedLocale ?? currentLocale))),
-          child: Builder(builder: (context) {
-            String language = "English";
-            try {
-              language = context.localized.nativeName;
-            } catch (_) {}
-            return Text(language);
-          }),
+          locale: ref.watch(
+            clientSettingsProvider.select(
+              (value) => (value.selectedLocale ?? currentLocale),
+            ),
+          ),
+          child: Builder(
+            builder: (context) {
+              String language = "English";
+              try {
+                language = context.localized.nativeName;
+              } catch (_) {}
+              return Text(language);
+            },
+          ),
         ),
         itemBuilder: (context) {
           return [
@@ -46,62 +89,83 @@ List<Widget> buildClientSettingsVisual(
                 label: Localizations.override(
                   context: context,
                   locale: entry,
-                  child: Builder(builder: (context) {
-                    return Text("${context.localized.nativeName} (${entry.toDisplayCode()})");
-                  }),
+                  child: Builder(
+                    builder: (context) {
+                      return Text(
+                        "${context.localized.nativeName} (${entry.toDisplayCode()})",
+                      );
+                    },
+                  ),
                 ),
-                action: () =>
-                    ref.read(clientSettingsProvider.notifier).update((state) => state.copyWith(selectedLocale: entry)),
+                action: () => ref
+                    .read(clientSettingsProvider.notifier)
+                    .update((state) => state.copyWith(selectedLocale: entry)),
               ),
-            )
+            ),
           ];
         },
       ),
       SettingsListTile(
         label: Text(context.localized.settingsBlurredPlaceholderTitle),
         subLabel: Text(context.localized.settingsBlurredPlaceholderDesc),
-        onTap: () => ref.read(clientSettingsProvider.notifier).setBlurPlaceholders(!clientSettings.blurPlaceHolders),
+        onTap: () => ref
+            .read(clientSettingsProvider.notifier)
+            .setBlurPlaceholders(!clientSettings.blurPlaceHolders),
         trailing: Switch(
           value: clientSettings.blurPlaceHolders,
-          onChanged: (value) => ref.read(clientSettingsProvider.notifier).setBlurPlaceholders(value),
+          onChanged: (value) => ref
+              .read(clientSettingsProvider.notifier)
+              .setBlurPlaceholders(value),
         ),
       ),
       SettingsListTile(
         label: Text(context.localized.settingsBlurEffectsTitle),
         subLabel: Text(context.localized.settingsBlurEffectsDesc),
-        onTap: () => ref.read(clientSettingsProvider.notifier).setBlurEffects(!clientSettings.enableBlurEffects),
+        onTap: () => ref
+            .read(clientSettingsProvider.notifier)
+            .setBlurEffects(!clientSettings.enableBlurEffects),
         trailing: Switch(
           value: clientSettings.enableBlurEffects,
-          onChanged: (value) => ref.read(clientSettingsProvider.notifier).setBlurEffects(value),
+          onChanged: (value) =>
+              ref.read(clientSettingsProvider.notifier).setBlurEffects(value),
         ),
       ),
       SettingsListTile(
         label: Text(context.localized.settingsBlurEpisodesTitle),
         subLabel: Text(context.localized.settingsBlurEpisodesDesc),
-        onTap: () => ref.read(clientSettingsProvider.notifier).setBlurEpisodes(!clientSettings.blurUpcomingEpisodes),
+        onTap: () => ref
+            .read(clientSettingsProvider.notifier)
+            .setBlurEpisodes(!clientSettings.blurUpcomingEpisodes),
         trailing: Switch(
           value: clientSettings.blurUpcomingEpisodes,
-          onChanged: (value) => ref.read(clientSettingsProvider.notifier).setBlurEpisodes(value),
+          onChanged: (value) =>
+              ref.read(clientSettingsProvider.notifier).setBlurEpisodes(value),
         ),
       ),
       SettingsListTile(
         label: Text(context.localized.settingsEnableOsMediaControls),
         subLabel: Text(context.localized.settingsEnableOsMediaControlsDesc),
-        onTap: () => ref.read(clientSettingsProvider.notifier).setMediaKeys(!clientSettings.enableMediaKeys),
+        onTap: () => ref
+            .read(clientSettingsProvider.notifier)
+            .setMediaKeys(!clientSettings.enableMediaKeys),
         trailing: Switch(
           value: clientSettings.enableMediaKeys,
-          onChanged: (value) => ref.read(clientSettingsProvider.notifier).setMediaKeys(value),
+          onChanged: (value) =>
+              ref.read(clientSettingsProvider.notifier).setMediaKeys(value),
         ),
       ),
       if (AdaptiveLayout.viewSizeOf(context) == ViewSize.television)
         SettingsListTile(
           label: Text(context.localized.enableNewTVLayout),
           subLabel: Text(context.localized.enableNewTVLayoutDesc),
-          onTap: () =>
-              ref.read(clientSettingsProvider.notifier).setExpandedTVLayout(!clientSettings.useTVExpandedLayout),
+          onTap: () => ref
+              .read(clientSettingsProvider.notifier)
+              .setExpandedTVLayout(!clientSettings.useTVExpandedLayout),
           trailing: Switch(
             value: clientSettings.useTVExpandedLayout,
-            onChanged: (value) => ref.read(clientSettingsProvider.notifier).setExpandedTVLayout(value),
+            onChanged: (value) => ref
+                .read(clientSettingsProvider.notifier)
+                .setExpandedTVLayout(value),
           ),
         ),
       SettingsListTileEnum(
@@ -112,7 +176,9 @@ List<Widget> buildClientSettingsVisual(
             .map(
               (e) => ItemActionButton(
                 label: Text(e.label(context)),
-                action: () => ref.read(clientSettingsProvider.notifier).update((cb) => cb.copyWith(backgroundImage: e)),
+                action: () => ref
+                    .read(clientSettingsProvider.notifier)
+                    .update((cb) => cb.copyWith(backgroundImage: e)),
               ),
             )
             .toList(),
@@ -122,23 +188,34 @@ List<Widget> buildClientSettingsVisual(
         subLabel: Text(context.localized.usePostersForLibraryIconsDesc),
         onTap: () => ref
             .read(clientSettingsProvider.notifier)
-            .update((cb) => cb.copyWith(usePosterForLibrary: !clientSettings.usePosterForLibrary)),
+            .update(
+              (cb) => cb.copyWith(
+                usePosterForLibrary: !clientSettings.usePosterForLibrary,
+              ),
+            ),
         trailing: Switch(
           value: clientSettings.usePosterForLibrary,
-          onChanged: (value) =>
-              ref.read(clientSettingsProvider.notifier).update((cb) => cb.copyWith(usePosterForLibrary: value)),
+          onChanged: (value) => ref
+              .read(clientSettingsProvider.notifier)
+              .update((cb) => cb.copyWith(usePosterForLibrary: value)),
         ),
       ),
       SettingsListTile(
         label: Text(context.localized.settingsNextUpCutoffDays),
         trailing: IntInputField(
-          suffix: context.localized.days(clientSettings.nextUpDateCutoff?.inDays ?? 1),
+          suffix: context.localized.days(
+            clientSettings.nextUpDateCutoff?.inDays ?? 1,
+          ),
           controller: nextUpDaysEditor,
           onSubmitted: (value) {
             if (value != null) {
-              ref.read(clientSettingsProvider.notifier).update((current) => current.copyWith(
-                    nextUpDateCutoff: Duration(days: value),
-                  ));
+              ref
+                  .read(clientSettingsProvider.notifier)
+                  .update(
+                    (current) => current.copyWith(
+                      nextUpDateCutoff: Duration(days: value),
+                    ),
+                  );
             }
           },
         ),
@@ -149,23 +226,28 @@ List<Widget> buildClientSettingsVisual(
         trailing: IntInputField(
           controller: libraryPageSizeController,
           placeHolder: "500",
-          onSubmitted: (value) => ref.read(clientSettingsProvider.notifier).update(
-                (current) => current.copyWith(libraryPageSize: value),
-              ),
+          onSubmitted: (value) => ref
+              .read(clientSettingsProvider.notifier)
+              .update((current) => current.copyWith(libraryPageSize: value)),
         ),
       ),
       SettingsListTile(
-        label: Text(AdaptiveLayout.of(context).isDesktop
-            ? context.localized.settingsShowScaleSlider
-            : context.localized.settingsPosterPinch),
-        onTap: () => ref.read(clientSettingsProvider.notifier).update(
-              (current) => current.copyWith(pinchPosterZoom: !current.pinchPosterZoom),
+        label: Text(
+          AdaptiveLayout.of(context).isDesktop
+              ? context.localized.settingsShowScaleSlider
+              : context.localized.settingsPosterPinch,
+        ),
+        onTap: () => ref
+            .read(clientSettingsProvider.notifier)
+            .update(
+              (current) =>
+                  current.copyWith(pinchPosterZoom: !current.pinchPosterZoom),
             ),
         trailing: Switch(
           value: clientSettings.pinchPosterZoom,
-          onChanged: (value) => ref.read(clientSettingsProvider.notifier).update(
-                (current) => current.copyWith(pinchPosterZoom: value),
-              ),
+          onChanged: (value) => ref
+              .read(clientSettingsProvider.notifier)
+              .update((current) => current.copyWith(pinchPosterZoom: value)),
         ),
       ),
       Column(
@@ -184,8 +266,9 @@ List<Widget> buildClientSettingsVisual(
               max: 1.5,
               value: clientSettings.posterSize,
               divisions: 20,
-              onChanged: (value) =>
-                  ref.read(clientSettingsProvider.notifier).update((current) => current.copyWith(posterSize: value)),
+              onChanged: (value) => ref
+                  .read(clientSettingsProvider.notifier)
+                  .update((current) => current.copyWith(posterSize: value)),
             ),
           ),
         ],

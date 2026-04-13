@@ -798,5 +798,10 @@
             }
         }
     },
-    "syncOverlaySyncing": "Adatok szinkronizálása"
+    "syncOverlaySyncing": "Adatok szinkronizálása",
+    "uiScale": "UI-méretezés",
+    "uiScaleDesc": "A teljes felhasználói felület méretezése. Használja a Ctrl++/Ctrl+-ot a nagyításhoz/kicsinyítéshez és a Ctrl+0-t a visszaállításhoz.",
+    "zoomIn": "Nagyítás",
+    "zoomOut": "Kicsinyítés",
+    "zoomReset": "Nagyítás visszaállítása"
 }

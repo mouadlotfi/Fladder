@@ -2005,5 +2005,10 @@
     "resolutionLabel": "Resolusi",
     "downloadTranscoded": "Unduh versi transkoding",
     "downloadOriginal": "Unduh versi asli",
-    "seerrUrlSchemeWarning": "Tidak dapat mendeteksi skema URL secara otomatis. Menggunakan default https://. Tambahkan awalan http:// jika server Anda tidak menggunakan HTTPS."
+    "seerrUrlSchemeWarning": "Tidak dapat mendeteksi skema URL secara otomatis. Menggunakan default https://. Tambahkan awalan http:// jika server Anda tidak menggunakan HTTPS.",
+    "uiScale": "Skala UI",
+    "uiScaleDesc": "Skalakan seluruh antarmuka pengguna. Gunakan Ctrl++/Ctrl+- untuk memperbesar/memperkecil dan Ctrl+0 untuk mengatur ulang.",
+    "zoomIn": "Perbesar",
+    "zoomOut": "Perkecil",
+    "zoomReset": "Atur ulang zoom"
 }

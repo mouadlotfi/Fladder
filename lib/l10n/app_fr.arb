@@ -1856,5 +1856,10 @@
     "advancedVideoOptionsDesc": "Activer le HDR, le tone mapping et la gestion avancée des couleurs (instable sur certains appareils)",
     "linkData": "Données du lien",
     "passwordNotRequired": "Non requis, laissez vide pour ne pas inclure le mot de passe dans le lien",
-    "authLinkButtonToolTip": "Ouvrir la fenêtre du lien d’authentification"
+    "authLinkButtonToolTip": "Ouvrir la fenêtre du lien d’authentification",
+    "uiScale": "Échelle de l'interface",
+    "uiScaleDesc": "Mettre à l'échelle toute l'interface utilisateur. Utilisez Ctrl++/Ctrl+- pour zoomer et Ctrl+0 pour réinitialiser.",
+    "zoomIn": "Zoom avant",
+    "zoomOut": "Zoom arrière",
+    "zoomReset": "Réinitialiser le zoom"
 }

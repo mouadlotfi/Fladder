@@ -946,5 +946,10 @@
     "videoScalingScaleDown": "Zmenšiť",
     "@videoScalingScaleDown": {},
     "viewPhotos": "Zobraziť fotografie",
-    "@viewPhotos": {}
+    "@viewPhotos": {},
+    "uiScale": "Mierka rozhrania",
+    "uiScaleDesc": "Zmenšujte celé používateľské rozhranie. Použite Ctrl++/Ctrl+- na priblíženie/oddialenie a Ctrl+0 na reset.",
+    "zoomIn": "Priblížiť",
+    "zoomOut": "Oddialiť",
+    "zoomReset": "Resetovať priblíženie"
 }

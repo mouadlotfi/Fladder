@@ -1231,5 +1231,10 @@
     "television": "Televizor",
     "@television": {},
     "layoutModeDual": "Dual",
-    "@layoutModeDual": {}
+    "@layoutModeDual": {},
+    "uiScale": "Scară interfață",
+    "uiScaleDesc": "Scalează întreaga interfață cu utilizatorul. Folosește Ctrl++/Ctrl+- pentru a mări/micșora și Ctrl+0 pentru a reseta.",
+    "zoomIn": "Mărire",
+    "zoomOut": "Micșorare",
+    "zoomReset": "Resetare zoom"
 }

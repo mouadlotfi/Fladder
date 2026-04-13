@@ -1537,5 +1537,10 @@
     "settingsLocalUrlTitle": "URL del servidor local",
     "@settingsLocalUrlTitle": {},
     "settingsLocalUrlSetTitle": "Configurar URL Local",
-    "@settingsLocalUrlSetTitle": {}
+    "@settingsLocalUrlSetTitle": {},
+    "uiScale": "Escala de la interfície",
+    "uiScaleDesc": "Escala tota la interfície d'usuari. Utilitza Ctrl++/Ctrl+- per ampliar/reduir i Ctrl+0 per restablir.",
+    "zoomIn": "Ampliar",
+    "zoomOut": "Reduir",
+    "zoomReset": "Restablir zoom"
 }

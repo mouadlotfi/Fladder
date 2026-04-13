@@ -561,5 +561,10 @@
     "settingsProfileSubtitleLanguage": "Föredraget undertextsspråk",
     "@settingsProfileSubtitleLanguage": {},
     "settingsProfileSubtitleMode": "Undertextsläge",
-    "@settingsProfileSubtitleMode": {}
+    "@settingsProfileSubtitleMode": {},
+    "uiScale": "UI-skala",
+    "uiScaleDesc": "Skala hela användargränssnittet. Använd Ctrl++/Ctrl+- för att zooma in/ut och Ctrl+0 för att återställa.",
+    "zoomIn": "Zooma in",
+    "zoomOut": "Zooma ut",
+    "zoomReset": "Återställ zoom"
 }

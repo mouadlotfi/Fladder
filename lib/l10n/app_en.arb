@@ -2616,5 +2616,15 @@
   },
   "seerrMovies": "Discover Movies",
   "seerrSeries": "Discover Series",
-  "today": "Today"
+  "today": "Today",
+  "uiScale": "UI Scale",
+  "@uiScale": {},
+  "uiScaleDesc": "Scale the entire user interface. Use Ctrl++/Ctrl+- to zoom in/out and Ctrl+0 to reset.",
+  "@uiScaleDesc": {},
+  "zoomIn": "Zoom In",
+  "@zoomIn": {},
+  "zoomOut": "Zoom Out",
+  "@zoomOut": {},
+  "zoomReset": "Reset Zoom",
+  "@zoomReset": {}
 }

@@ -1868,5 +1868,10 @@
     "groupedFoldersTitle": "Zgrupowane Biblioteki",
     "groupedFoldersDescription": "Automatycznie grupuj zawartość z następujących bibliotek w widoki takie jak 'Filmy', 'Muzyka' i 'TV'.",
     "downloadTranscoded": "Pobierz transkodowane",
-    "downloadOriginal": "Pobierz oryginalne"
+    "downloadOriginal": "Pobierz oryginalne",
+    "uiScale": "Skala interfejsu",
+    "uiScaleDesc": "Skaluj cały interfejs użytkownika. Użyj Ctrl++/Ctrl+- do przybliżenia/oddalenia i Ctrl+0 do resetowania.",
+    "zoomIn": "Przybliż",
+    "zoomOut": "Oddal",
+    "zoomReset": "Resetuj przybliżenie"
 }

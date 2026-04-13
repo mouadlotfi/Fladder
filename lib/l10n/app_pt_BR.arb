@@ -1853,5 +1853,10 @@
         }
     },
     "notificationTimerIOSWarning": " O iOS decide quando e se as atualizações serão executadas, podendo haver atrasos ou até mesmo a ausência de notificações.",
-    "authLinkButtonToolTip": "Abrir caixa de diálogo de link de autenticação"
+    "authLinkButtonToolTip": "Abrir caixa de diálogo de link de autenticação",
+    "uiScale": "Escala da interface",
+    "uiScaleDesc": "Dimensiona toda a interface do usuário. Use Ctrl++/Ctrl+- para aumentar/diminuir e Ctrl+0 para redefinir.",
+    "zoomIn": "Aumentar zoom",
+    "zoomOut": "Diminuir zoom",
+    "zoomReset": "Redefinir zoom"
 }

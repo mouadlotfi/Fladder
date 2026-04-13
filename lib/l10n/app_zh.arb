@@ -1875,5 +1875,10 @@
     "hidePlayedInLatestTitle": "隐藏已观看内容",
     "hidePlayedInLatestDescription": "从“最近添加的媒体”中隐藏已观看的内容",
     "groupedFoldersTitle": "分组媒体库",
-    "groupedFoldersDescription": "自动将以下媒体库中的内容分组到“电影”、“音乐”和“电视节目”等视图中。"
+    "groupedFoldersDescription": "自动将以下媒体库中的内容分组到“电影”、“音乐”和“电视节目”等视图中。",
+    "uiScale": "UI 缩放",
+    "uiScaleDesc": "缩放整个用户界面。使用 Ctrl++/Ctrl+- 放大/缩小，Ctrl+0 重置。",
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "zoomReset": "重置缩放"
 }

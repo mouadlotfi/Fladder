@@ -937,5 +937,10 @@
     "mute": "ミュート",
     "@mute": {},
     "version": "バージョン",
-    "@version": {}
+    "@version": {},
+    "uiScale": "UIスケール",
+    "uiScaleDesc": "ユーザーインターフェース全体を拡大縮小します。Ctrl++/Ctrl+-でズーム、Ctrl+0でリセット。",
+    "zoomIn": "ズームイン",
+    "zoomOut": "ズームアウト",
+    "zoomReset": "ズームをリセット"
 }

@@ -1868,5 +1868,10 @@
     "seerrLoggedIn": "Com sessão iniciada no Seerr",
     "hidePlayedInLatestDescription": "Ocultar conteúdo já visto de 'Adicionados recentemente'",
     "homeBannerDetailed": "Detalhado",
-    "backgroundColor": "Cor de fundo"
+    "backgroundColor": "Cor de fundo",
+    "uiScale": "Escala da interface",
+    "uiScaleDesc": "Dimensiona toda a interface do utilizador. Use Ctrl++/Ctrl+- para aumentar/diminuir e Ctrl+0 para redefinir.",
+    "zoomIn": "Aumentar zoom",
+    "zoomOut": "Diminuir zoom",
+    "zoomReset": "Redefinir zoom"
 }

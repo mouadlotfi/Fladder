@@ -1551,5 +1551,10 @@
     "settingsLocalUrlSetTitle": "Cấu hình URL cục bộ",
     "@settingsLocalUrlSetTitle": {},
     "settingsLocalUrlSetDesc": "Chỉ định địa chỉ máy chủ cục bộ. Fladder sẽ tự dùng URL này khi thiết bị của ông ở trong cùng mạng.",
-    "@settingsLocalUrlSetDesc": {}
+    "@settingsLocalUrlSetDesc": {},
+    "uiScale": "Tỷ lệ giao diện",
+    "uiScaleDesc": "Thay đổi tỷ lệ toàn bộ giao diện người dùng. Dùng Ctrl++/Ctrl+- để phóng to/thu nhỏ và Ctrl+0 để đặt lại.",
+    "zoomIn": "Phóng to",
+    "zoomOut": "Thu nhỏ",
+    "zoomReset": "Đặt lại thu phóng"
 }

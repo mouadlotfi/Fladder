@@ -1894,5 +1894,10 @@
     "resolutionLabel": "Auflösung",
     "downloadTranscoded": "Transkodiert herunterladen",
     "downloadOriginal": "Im Original herunterladen",
-    "seerrUrlSchemeWarning": "Konnte das URL-Schema nicht automatisch erkennen. Es wird standardmäßig https:// verwendet. Nutze das http:// Prefix, wenn dein Server kein HTTPS verwendet."
+    "seerrUrlSchemeWarning": "Konnte das URL-Schema nicht automatisch erkennen. Es wird standardmäßig https:// verwendet. Nutze das http:// Prefix, wenn dein Server kein HTTPS verwendet.",
+    "uiScale": "UI-Skalierung",
+    "uiScaleDesc": "Skaliere die gesamte Benutzeroberfläche. Verwende Strg++/Strg+- zum Vergrößern/Verkleinern und Strg+0 zum Zurücksetzen.",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern",
+    "zoomReset": "Zoom zurücksetzen"
 }

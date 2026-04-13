@@ -1182,5 +1182,10 @@
     "includePassword": "Включить пароль",
     "invalidAuthLink": "Неверная ссылка для входа",
     "homeBannerDetailed": "Подробный",
-    "homeBannerTV": "ТВ"
+    "homeBannerTV": "ТВ",
+    "uiScale": "Масштаб интерфейса",
+    "uiScaleDesc": "Масштабируйте весь интерфейс. Используйте Ctrl++/Ctrl+- для увеличения/уменьшения и Ctrl+0 для сброса.",
+    "zoomIn": "Увеличить",
+    "zoomOut": "Уменьшить",
+    "zoomReset": "Сбросить масштаб"
 }

@@ -1485,5 +1485,10 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "uiScale": "UI ölçeği",
+    "uiScaleDesc": "Tüm kullanıcı arayüzünü ölçeklendirn. Yakınlaştırmak/uzaklaştırmak için Ctrl++/Ctrl+- ve sıfırlamak için Ctrl+0 kullanın.",
+    "zoomIn": "Yakınlaştır",
+    "zoomOut": "Uzaklaştır",
+    "zoomReset": "Yakınlaştırmayı sıfırla"
 }

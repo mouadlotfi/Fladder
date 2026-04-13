@@ -33,15 +33,19 @@ void main(List<String> args) async {
   runApp(
     ProviderScope(
       overrides: [
-        sharedPreferencesProvider.overrideWith((ref) => bootstrap.sharedPreferences),
-        applicationInfoProvider.overrideWith((ref) => bootstrap.applicationInfo),
+        sharedPreferencesProvider.overrideWith(
+          (ref) => bootstrap.sharedPreferences,
+        ),
+        applicationInfoProvider.overrideWith(
+          (ref) => bootstrap.applicationInfo,
+        ),
         crashLogProvider.overrideWith((ref) => bootstrap.crashProvider),
         argumentsStateProvider.overrideWith((ref) => bootstrap.argumentsModel),
-        syncProvider.overrideWith((ref) => SyncNotifier(ref, bootstrap.applicationDirectory)),
+        syncProvider.overrideWith(
+          (ref) => SyncNotifier(ref, bootstrap.applicationDirectory),
+        ),
       ],
-      child: AdaptiveLayoutBuilder(
-        child: (context) => const Main(),
-      ),
+      child: AdaptiveLayoutBuilder(child: (context) => const Main()),
     ),
   );
 }
@@ -53,39 +57,59 @@ class Main extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return PlatformAppWrapper(
       builder: (context, autoRouter) {
-        return _FladderApp(
-          autoRouter: autoRouter,
-        );
+        return _FladderApp(autoRouter: autoRouter);
       },
     );
   }
 }
 
 class _FladderApp extends ConsumerWidget {
-  const _FladderApp({
-    required this.autoRouter,
-  });
+  const _FladderApp({required this.autoRouter});
 
   final AutoRouter autoRouter;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLinux = defaultTargetPlatform == TargetPlatform.linux;
-    final themeMode = ref.watch(clientSettingsProvider.select((value) => value.themeMode));
-    final themeColor = ref.watch(clientSettingsProvider.select((value) => value.themeColor));
-    final amoledBlack = ref.watch(clientSettingsProvider.select((value) => value.amoledBlack));
-    final mouseDrag = ref.watch(clientSettingsProvider.select((value) => value.mouseDragSupport));
-    final schemeVariant = ref.watch(clientSettingsProvider.select((value) => value.schemeVariant));
-    final language = ref.watch(clientSettingsProvider
-        .select((value) => value.selectedLocale ?? WidgetsBinding.instance.platformDispatcher.locale));
+    final themeMode = ref.watch(
+      clientSettingsProvider.select((value) => value.themeMode),
+    );
+    final themeColor = ref.watch(
+      clientSettingsProvider.select((value) => value.themeColor),
+    );
+    final amoledBlack = ref.watch(
+      clientSettingsProvider.select((value) => value.amoledBlack),
+    );
+    final mouseDrag = ref.watch(
+      clientSettingsProvider.select((value) => value.mouseDragSupport),
+    );
+    final schemeVariant = ref.watch(
+      clientSettingsProvider.select((value) => value.schemeVariant),
+    );
+    final uiScale = ref.watch(
+      clientSettingsProvider.select((value) => value.uiScale),
+    );
+    final language = ref.watch(
+      clientSettingsProvider.select(
+        (value) =>
+            value.selectedLocale ??
+            WidgetsBinding.instance.platformDispatcher.locale,
+      ),
+    );
     final scrollBehaviour = const MaterialScrollBehavior();
     return DynamicColorBuilder(
       builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
         final baseLightTheme = themeColor == null
-            ? FladderTheme.theme(lightDynamic ?? FladderTheme.defaultScheme(Brightness.light), schemeVariant)
+            ? FladderTheme.theme(
+                lightDynamic ?? FladderTheme.defaultScheme(Brightness.light),
+                schemeVariant,
+              )
             : FladderTheme.theme(themeColor.schemeLight, schemeVariant);
         final baseDarkTheme = (themeColor == null
-            ? FladderTheme.theme(darkDynamic ?? FladderTheme.defaultScheme(Brightness.dark), schemeVariant)
+            ? FladderTheme.theme(
+                darkDynamic ?? FladderTheme.defaultScheme(Brightness.dark),
+                schemeVariant,
+              )
             : FladderTheme.theme(themeColor.schemeDark, schemeVariant));
 
         // Apply Chinese font for non-Linux platforms (Windows, macOS, Android, iOS)
@@ -95,7 +119,11 @@ class _FladderApp extends ConsumerWidget {
                 lightTheme: baseLightTheme,
                 darkTheme: baseDarkTheme,
               );
-        final darkTheme = isLinux ? baseDarkTheme : FladderTheme.applyChineseFontToDarkTheme(darkTheme: baseDarkTheme);
+        final darkTheme = isLinux
+            ? baseDarkTheme
+            : FladderTheme.applyChineseFontToDarkTheme(
+                darkTheme: baseDarkTheme,
+              );
 
         final amoledOverwrite = amoledBlack ? Colors.black : null;
         return ThemesData(
@@ -132,6 +160,7 @@ class _FladderApp extends ConsumerWidget {
                 currentLocale: language,
               ),
               enable: ref.read(argumentsStateProvider).leanBackMode,
+              uiScale: uiScale,
             ),
             debugShowCheckedModeBanner: false,
             darkTheme: darkTheme.copyWith(

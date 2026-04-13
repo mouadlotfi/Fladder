@@ -1818,5 +1818,10 @@
     "includeHiddenItemsDesc": "Inclusief bibliotheken verborgen van dashboard scherm",
     "settingsBlurEffectsTitle": "Blur effecten aanzetten",
     "settingsBlurEffectsDesc": "Schakel vervagingseffecten in de gebruikersinterface in. Het uitschakelen hiervan kan de prestaties op minder krachtige apparaten verbeteren.",
-    "profileSettingsOpenAuthAtLaunch": "Toon authenticatiemethode bij app-vergrendeling"
+    "profileSettingsOpenAuthAtLaunch": "Toon authenticatiemethode bij app-vergrendeling",
+    "uiScale": "UI-schaal",
+    "uiScaleDesc": "Schaal de hele gebruikersinterface. Gebruik Ctrl++/Ctrl+- om in/uit te zoomen en Ctrl+0 om te resetten.",
+    "zoomIn": "Inzoomen",
+    "zoomOut": "Uitzoomen",
+    "zoomReset": "Zoom resetten"
 }
