@@ -22,7 +22,10 @@ part 'client_settings_model.g.dart';
 enum GlobalHotKeys {
   search,
   exit,
-  toggleSideBar;
+  toggleSideBar,
+  zoomIn,
+  zoomOut,
+  zoomReset;
 
   const GlobalHotKeys();
 
@@ -31,6 +34,9 @@ enum GlobalHotKeys {
       GlobalHotKeys.search => context.localized.search,
       GlobalHotKeys.exit => context.localized.exitFladderTitle,
       GlobalHotKeys.toggleSideBar => context.localized.toggleSidebar,
+      GlobalHotKeys.zoomIn => context.localized.zoomIn,
+      GlobalHotKeys.zoomOut => context.localized.zoomOut,
+      GlobalHotKeys.zoomReset => context.localized.zoomReset,
     };
   }
 }
@@ -93,6 +99,7 @@ abstract class ClientSettingsModel with _$ClientSettingsModel {
     @Default(false) bool useTVExpandedLayout,
     String? lastViewedUpdate,
     int? libraryPageSize,
+    @Default(1.0) double uiScale,
     @Default({}) Map<GlobalHotKeys, KeyCombination> shortcuts,
   }) = _ClientSettingsModel;
 
@@ -100,7 +107,8 @@ abstract class ClientSettingsModel with _$ClientSettingsModel {
     return ClientSettingsModel.internal(
       transcodeDownloadModel: TranscodeDownloadModel.fromDefaults(),
       blurPlaceHolders: leanBackMode ? false : true,
-      backgroundImage: leanBackMode ? BackgroundType.disabled : BackgroundType.blurred,
+      backgroundImage:
+          leanBackMode ? BackgroundType.disabled : BackgroundType.blurred,
       themeMode: leanBackMode ? ThemeMode.dark : ThemeMode.system,
       enableBlurEffects: leanBackMode ? false : true,
       useTVExpandedLayout: false,
@@ -115,18 +123,24 @@ abstract class ClientSettingsModel with _$ClientSettingsModel {
     return syncPath;
   }
 
-  factory ClientSettingsModel.fromJson(Map<String, dynamic> json) => _$ClientSettingsModelFromJson(json);
+  factory ClientSettingsModel.fromJson(Map<String, dynamic> json) =>
+      _$ClientSettingsModelFromJson(json);
 
   Map<GlobalHotKeys, KeyCombination> get currentShortcuts =>
-      _defaultGlobalHotKeys.map((key, value) => MapEntry(key, shortcuts[key] ?? value));
+      _defaultGlobalHotKeys.map(
+        (key, value) => MapEntry(key, shortcuts[key] ?? value),
+      );
 
-  Map<GlobalHotKeys, KeyCombination> get defaultShortCuts => _defaultGlobalHotKeys;
+  Map<GlobalHotKeys, KeyCombination> get defaultShortCuts =>
+      _defaultGlobalHotKeys;
 
   Brightness statusBarBrightness(BuildContext context) {
     return switch (themeMode) {
       ThemeMode.dark => Brightness.light,
       ThemeMode.light => Brightness.dark,
-      _ => MediaQuery.of(context).platformBrightness == Brightness.dark ? Brightness.light : Brightness.dark,
+      _ => MediaQuery.of(context).platformBrightness == Brightness.dark
+          ? Brightness.light
+          : Brightness.dark,
     };
   }
 }
@@ -150,7 +164,8 @@ class LocaleConvert implements JsonConverter<Locale?, String?> {
       final second = parts[1];
 
       if (second.length == 4) {
-        scriptCode = second[0].toUpperCase() + second.substring(1).toLowerCase();
+        scriptCode =
+            second[0].toUpperCase() + second.substring(1).toLowerCase();
       } else {
         countryCode = second.toUpperCase();
       }
@@ -181,38 +196,24 @@ class LocaleConvert implements JsonConverter<Locale?, String?> {
 class Vector2 {
   final double x;
   final double y;
-  const Vector2({
-    required this.x,
-    required this.y,
-  });
+  const Vector2({required this.x, required this.y});
 
-  Vector2 copyWith({
-    double? x,
-    double? y,
-  }) {
-    return Vector2(
-      x: x ?? this.x,
-      y: y ?? this.y,
-    );
+  Vector2 copyWith({double? x, double? y}) {
+    return Vector2(x: x ?? this.x, y: y ?? this.y);
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'x': x,
-      'y': y,
-    };
+    return <String, dynamic>{'x': x, 'y': y};
   }
 
   factory Vector2.fromMap(Map<String, dynamic> map) {
-    return Vector2(
-      x: map['x'] as double,
-      y: map['y'] as double,
-    );
+    return Vector2(x: map['x'] as double, y: map['y'] as double);
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Vector2.fromJson(String source) => Vector2.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Vector2.fromJson(String source) =>
+      Vector2.fromMap(json.decode(source) as Map<String, dynamic>);
 
   factory Vector2.fromSize(Size size) => Vector2(x: size.width, y: size.height);
 
@@ -229,27 +230,70 @@ class Vector2 {
   @override
   int get hashCode => x.hashCode ^ y.hashCode;
 
-  static Vector2 fromPosition(Offset windowPosition) => Vector2(x: windowPosition.dx, y: windowPosition.dy);
+  static Vector2 fromPosition(Offset windowPosition) =>
+      Vector2(x: windowPosition.dx, y: windowPosition.dy);
 }
 
-Map<GlobalHotKeys, KeyCombination> get _defaultGlobalHotKeys => switch (defaultTargetPlatform) {
+Map<GlobalHotKeys, KeyCombination> get _defaultGlobalHotKeys =>
+    switch (defaultTargetPlatform) {
       TargetPlatform.macOS => {
           for (var hotKey in GlobalHotKeys.values)
             hotKey: switch (hotKey) {
-              GlobalHotKeys.toggleSideBar => KeyCombination(key: LogicalKeyboardKey.keyQ),
-              GlobalHotKeys.search =>
-                KeyCombination(key: LogicalKeyboardKey.keyK, modifier: LogicalKeyboardKey.superKey),
-              GlobalHotKeys.exit => KeyCombination(key: LogicalKeyboardKey.keyQ, modifier: LogicalKeyboardKey.superKey),
+              GlobalHotKeys.toggleSideBar => KeyCombination(
+                  key: LogicalKeyboardKey.keyQ,
+                ),
+              GlobalHotKeys.search => KeyCombination(
+                  key: LogicalKeyboardKey.keyK,
+                  modifier: LogicalKeyboardKey.superKey,
+                ),
+              GlobalHotKeys.exit => KeyCombination(
+                  key: LogicalKeyboardKey.keyQ,
+                  modifier: LogicalKeyboardKey.superKey,
+                ),
+              GlobalHotKeys.zoomIn => KeyCombination(
+                  key: LogicalKeyboardKey.equal,
+                  modifier: LogicalKeyboardKey.superKey,
+                  altKey: LogicalKeyboardKey.add,
+                  altModifier: LogicalKeyboardKey.superKey,
+                ),
+              GlobalHotKeys.zoomOut => KeyCombination(
+                  key: LogicalKeyboardKey.minus,
+                  modifier: LogicalKeyboardKey.superKey,
+                ),
+              GlobalHotKeys.zoomReset => KeyCombination(
+                  key: LogicalKeyboardKey.digit0,
+                  modifier: LogicalKeyboardKey.superKey,
+                ),
             },
         },
       _ => {
           for (var hotKey in GlobalHotKeys.values)
             hotKey: switch (hotKey) {
-              GlobalHotKeys.toggleSideBar => KeyCombination(key: LogicalKeyboardKey.keyQ),
-              GlobalHotKeys.search =>
-                KeyCombination(key: LogicalKeyboardKey.keyK, modifier: LogicalKeyboardKey.controlLeft),
-              GlobalHotKeys.exit =>
-                KeyCombination(key: LogicalKeyboardKey.keyQ, modifier: LogicalKeyboardKey.controlLeft),
+              GlobalHotKeys.toggleSideBar => KeyCombination(
+                  key: LogicalKeyboardKey.keyQ,
+                ),
+              GlobalHotKeys.search => KeyCombination(
+                  key: LogicalKeyboardKey.keyK,
+                  modifier: LogicalKeyboardKey.controlLeft,
+                ),
+              GlobalHotKeys.exit => KeyCombination(
+                  key: LogicalKeyboardKey.keyQ,
+                  modifier: LogicalKeyboardKey.controlLeft,
+                ),
+              GlobalHotKeys.zoomIn => KeyCombination(
+                  key: LogicalKeyboardKey.equal,
+                  modifier: LogicalKeyboardKey.controlLeft,
+                  altKey: LogicalKeyboardKey.add,
+                  altModifier: LogicalKeyboardKey.controlLeft,
+                ),
+              GlobalHotKeys.zoomOut => KeyCombination(
+                  key: LogicalKeyboardKey.minus,
+                  modifier: LogicalKeyboardKey.controlLeft,
+                ),
+              GlobalHotKeys.zoomReset => KeyCombination(
+                  key: LogicalKeyboardKey.digit0,
+                  modifier: LogicalKeyboardKey.controlLeft,
+                ),
             },
-        }
+        },
     };
